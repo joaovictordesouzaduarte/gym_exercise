@@ -14,7 +14,6 @@ const images = [
   importAll(require.context("../assets/icons", false, /\.(png|jpe?g|svg)$/)),
 ];
 const getImage = (imageName) => {
-  console.log(images);
   let image = images.map(
     (image) =>
       image[`${imageName.split(" ")[0]}.png`] ||
@@ -24,8 +23,6 @@ const getImage = (imageName) => {
 };
 const BodyPart = ({ item, bodyPart, setBodyPart }) => {
   let iconUrl = getImage(item);
-  let teste = getImage("all");
-  console.log(teste);
 
   return (
     <Stack
@@ -42,15 +39,20 @@ const BodyPart = ({ item, bodyPart, setBodyPart }) => {
         cursor: "pointer",
         gap: "47px",
       }}
+      onClick={() => {
+        setBodyPart(item);
+        window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+      }}
     >
       <img
         src={iconUrl[0] ? iconUrl : Icon}
         alt="dumbbell"
-        style={{ width: "40px", height: "40px" }}
+        style={{ width: "50px", height: "50px" }}
       />
       <Typography
         fontSize="24px"
         fontWeight="bold"
+        fontFamily="Alegreya"
         color="#3A1212"
         textTransform="capitalize"
       >
