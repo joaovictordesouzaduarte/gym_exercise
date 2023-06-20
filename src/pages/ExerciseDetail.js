@@ -22,13 +22,12 @@ const ExerciseDetail = () => {
         exerciseOptions
       );
       setExerciseDetail(exerciseDetailData);
-      console.log(exerciseDetailData);
-      // const exerciseVideosData = await fetchData(
-      //   `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
-      //   youtubeOptions
-      // );
+      const exerciseVideosData = await fetchData(
+        `${youtubeSearchUrl}/search?query=${exerciseDetailData.name}`,
+        youtubeOptions
+      );
 
-      // setExerciseVideos(exerciseVideosData.contents);
+      setExerciseVideos(exerciseVideosData.contents);
     };
     fetchExercisesData();
   }, [id]);
@@ -40,7 +39,6 @@ const ExerciseDetail = () => {
         exerciseVideo={exerciseVideos}
         name={exerciseDetail.name}
       />
-      <SimilarExercises />
     </Box>
   );
 };
